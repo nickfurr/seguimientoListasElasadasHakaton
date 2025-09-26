@@ -15,55 +15,53 @@ public class ListaDobleSimple<T extends Comparable> {
 
     public void agregarInicio(T elem){
         
-        Nodo<T> newNodo = new Nodo(elem);
+        NodoDobleEnlazado<T> newNodo = new NodoDobleEnlazado<>(elem);
 
         if (primero == null) {
             primero = newNodo;
-            tam ++;
+            tamaño ++;
 
         }else{
-            
-            newNodo.setProximo(primero);
+            primero.setAnterior(newNodo); 
             primero = newNodo;
-            tam ++;
-
         }
    }
    //agregarFinal
    public void agregarFinal(T elem){
 
+        NodoDobleEnlazado<T> next = new NodoDobleEnlazado<>(elem);
         
-   }
+       if (primero == null) {
+            primero = next;
+            tamaño ++;
+       }else{
 
-    public <T> void mostrar(){
-        Nodo buffer = primero;
-        String mensage= "";
-
-        while (buffer != null) {
-            mensage += buffer.getDato();
-            System.out.println(buffer.getDato());
-            buffer = buffer.getProximo();
-        }
-
-        System.out.println(mensage);
-    }
-    //agregarIndice
-    public void agregarIndice(int indice, T valor){
-        Nodo<T> valorN = new Nodo<>(valor);
-
+        NodoDobleEnlazado<T> buff = primero;
         int contador = 0;
-
-        Nodo<T> bufferNodo = primero;
-        Nodo<T> noseComoLLamarlo = null;
-        while (contador != indice-1) {
-            bufferNodo = bufferNodo.getProximo();
-            contador ++;
+        while (tamaño > contador) {
+            buff = buff.getSiguiente();
+            contador++;
         }
-        noseComoLLamarlo = bufferNodo.getProximo();
-        bufferNodo.setProximo(valorN);
-        valorN.setProximo(noseComoLLamarlo);
-        tam ++;
-        
+            buff.setSiguiente(next);
+            tamaño++;
+       }
    }
+
+   public void agregarIndice(int indice, T valor){
+    NodoDobleEnlazado<T> newNodo = new NodoDobleEnlazado<>(valor);
+    int contador = 0;
+    NodoDobleEnlazado<T> buff = primero;
+
+    while (contador < indice) {
+        buff = buff.getSiguiente();
+        contador++;
+    }
+    NodoDobleEnlazado<T> buffer = buff.getSiguiente();
+    buff.setSiguiente(newNodo);
+    newNodo.setSiguiente(buffer);
+   }
+
+  
+   
 
 }

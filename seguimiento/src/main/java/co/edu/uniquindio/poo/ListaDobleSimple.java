@@ -1,8 +1,17 @@
 package co.edu.uniquindio.poo;
 
-public class ListaDobleSimple {
+public class ListaDobleSimple<T extends Comparable> {
     
-    NodoDobleEnlazado<> primero
+    NodoDobleEnlazado<T> primero;
+    NodoDobleEnlazado<T> ultimo;
+    int tamaño;
+
+
+    public ListaDobleSimple(){
+        tamaño = 0;
+        primero = null;
+        ultimo = null;
+    }
 
     public void agregarInicio(T elem){
         
@@ -23,21 +32,7 @@ public class ListaDobleSimple {
    //agregarFinal
    public void agregarFinal(T elem){
 
-        Nodo<T> next = new Nodo<>(elem);
         
-       if (primero == null) {
-            primero = next;
-            tam ++;
-       }else{
-
-        Nodo<T> buff = primero;
-
-        while (buff.getProximo() != null) {
-            buff = buff.getProximo();
-        }
-            buff.setProximo(next);
-            tam++;
-       }
    }
 
     public <T> void mostrar(){

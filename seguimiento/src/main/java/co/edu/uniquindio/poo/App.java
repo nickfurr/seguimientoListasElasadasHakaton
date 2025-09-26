@@ -6,6 +6,11 @@ package co.edu.uniquindio.poo;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        LIstaSimpleEnlazadaCircular listaCircular = new LIstaSimpleEnlazadaCircular<>();
+        listaCircular.agregarFinal(1);
+        listaCircular.agregarFinal(2);
+        listaCircular.agregarFinal(3);
+        listaCircular.agregarFinal(4);
+        listaCircular.mostrar();
     }
 }

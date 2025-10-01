@@ -14,7 +14,10 @@ public class Cola<T extends Comparable> {
     public Nodo<T> getPrimero() {
         return primero;
     }
+// agregar al inicio,  quitar al final, lo que hay que hacer
 
+
+//agregar al final
     public void encolar(T elem) {
         Nodo<T> nuevo = new Nodo<>(elem);
         if (ultimo == null) {
@@ -24,7 +27,7 @@ public class Cola<T extends Comparable> {
         ultimo = nuevo;
         tam++;
     }
-   
+//elimina y devuelve el elemento que está al frente de la cola.
     public T desencolar() {
         if (primero == null) return null;
         T dato = primero.getDato();

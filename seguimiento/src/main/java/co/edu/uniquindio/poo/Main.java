@@ -6,50 +6,27 @@ package co.edu.uniquindio.poo;
  */
 public class Main {
     public static void main(String[] args) {
-        ListaDobleSimple<Integer> lista = new ListaDobleSimple<>();
+        Cola<Integer> cola = new Cola<>();
 
-        System.out.println("---> Prueba agregarInicio ");
-        lista.agregarInicio(10);
-        lista.agregarInicio(20);
-        lista.agregarInicio(30);
-        lista.imprimirLista();  
+        // Encolar elementos
+        cola.encolar(10);
+        cola.encolar(20);
+        cola.encolar(30);
 
-        System.out.println("----- Prueba agregarfinal-------");
-        lista.agregarFinal(40);
-        lista.agregarFinal(50);
-        lista.imprimirLista(); 
+        System.out.println("Elemento al frente de la cola: " + cola.peek()); // Debería imprimir 10
 
-        System.out.println("B===D Prueba agregar indice ");
-        lista.agregarIndice(2, 25);
-        lista.imprimirLista(); 
+        // Desencolar elementos
+        System.out.println("Desencolado: " + cola.desencolar()); // Debería imprimir 10
+        System.out.println("Desencolado: " + cola.desencolar()); // Debería imprimir 20
 
-        lista.agregarIndice(0, 35);
-        lista.imprimirLista();  
+        // Verificar si la cola está vacía
+        System.out.println("¿La cola está vacía? " + cola.estaVacia()); // Debería imprimir false
 
-        lista.agregarIndice(lista.getTamaño(), 60);
-        lista.imprimirLista();  
+        // Tamaño de la cola
+        System.out.println("Tamaño de la cola: " + cola.tamaño()); // Debería imprimir 1
 
-        System.out.println("*** Prueba eliminar indice **");
-        lista.eliminarIndice(2);  
-        lista.imprimirLista();    
-
-        lista.eliminarIndice(0);  
-        lista.imprimirLista();  
-
-        lista.eliminarIndice(lista.getTamaño() - 1);  
-        lista.imprimirLista();    
-
-        System.out.println("=== Prueba agregarOrdenado ===");
-        ListaDobleSimple<Integer> listaOrdenada = new ListaDobleSimple<>();
-        listaOrdenada.agregarOrdenado(30);
-        listaOrdenada.agregarOrdenado(10);
-        listaOrdenada.agregarOrdenado(20);
-        listaOrdenada.agregarOrdenado(40);
-        listaOrdenada.agregarOrdenado(25);
-        listaOrdenada.imprimirLista();  
-
-        System.out.println("=== Tamaños finales ===");
-        System.out.println("Tamaño lista principal: " + lista.getTamaño());     
-        System.out.println("Tamaño lista ordenada: " + listaOrdenada.getTamaño());
+        // Desencolar el último elemento
+        System.out.println("Desencolado: " + cola.desencolar()); // Debería imprimir 30
+        System.out.println("¿La cola está vacía? " + cola.estaVacia()); // Debería imprimir true
     }
 }

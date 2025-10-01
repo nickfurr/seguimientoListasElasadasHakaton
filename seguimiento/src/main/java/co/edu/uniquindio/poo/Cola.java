@@ -11,19 +11,20 @@ public class Cola<T extends Comparable> {
         this.tam = 0;
     }
 
-    // Enqueue: agregar al final
+    public Nodo<T> getPrimero() {
+        return primero;
+    }
+
     public void encolar(T elem) {
         Nodo<T> nuevo = new Nodo<>(elem);
         if (ultimo == null) {
             primero = ultimo = nuevo;
-        } else {
-            ultimo.setProximo(nuevo);
-            ultimo = nuevo;
-        }
+        } 
+        ultimo.setProximo(nuevo);
+        ultimo = nuevo;
         tam++;
     }
-
-    // Dequeue: eliminar del inicio
+   
     public T desencolar() {
         if (primero == null) return null;
         T dato = primero.getDato();
@@ -33,7 +34,6 @@ public class Cola<T extends Comparable> {
         return dato;
     }
 
-    // Peek: ver el primero sin eliminar
     public T peek() {
         return (primero != null) ? primero.getDato() : null;
     }

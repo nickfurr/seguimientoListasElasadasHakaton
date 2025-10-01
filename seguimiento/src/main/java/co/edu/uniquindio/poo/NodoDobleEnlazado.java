@@ -1,14 +1,14 @@
 package co.edu.uniquindio.poo;
 
-public class NodoDobleEnlazado <T extends Comparable>{
-    T valor;
-    NodoDobleEnlazado anterior;
-    NodoDobleEnlazado siguiente;
+public class NodoDobleEnlazado<T extends Comparable<T>> {
+    private T valor;
+    private NodoDobleEnlazado<T> anterior;
+    private NodoDobleEnlazado<T> siguiente;
 
     public NodoDobleEnlazado(T dato) {
         this.valor = dato;
-        siguiente = null;// iniialmente
-        anterior = null;// 
+        this.siguiente = null;
+        this.anterior = null;
     }
 
     public T getValor() {
@@ -19,21 +19,19 @@ public class NodoDobleEnlazado <T extends Comparable>{
         this.valor = valor;
     }
 
-    public NodoDobleEnlazado getAnterior() {
+    public NodoDobleEnlazado<T> getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(NodoDobleEnlazado anterior) {
+    public void setAnterior(NodoDobleEnlazado<T> anterior) {
         this.anterior = anterior;
     }
 
-    public NodoDobleEnlazado getSiguiente() {
+    public NodoDobleEnlazado<T> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoDobleEnlazado siguiente) {
+    public void setSiguiente(NodoDobleEnlazado<T> siguiente) {
         this.siguiente = siguiente;
     }
-
-    
 }

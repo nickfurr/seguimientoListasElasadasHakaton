@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class ListaSimpleEnlazada<T extends Comparable> implements Iterable<T> {
 
-    private Nodo primero; 
+    protected Nodo primero; 
     private int tam;
     
     

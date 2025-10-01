@@ -1,7 +1,7 @@
 package co.edu.uniquindio.poo;
 // agregar al inicio,  quitar al final, lo que hay que hacer
 
-public class BiCola<T extends Comparable> {
+public class BiCola<T extends Comparable>{
     private Nodo<T> primero;
     private Nodo<T> ultimo;
     private int tam;

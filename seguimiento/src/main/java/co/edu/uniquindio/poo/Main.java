@@ -1,32 +1,61 @@
 package co.edu.uniquindio.poo;
 
-/**
- * Hello world!
- *
- */
 public class Main {
     public static void main(String[] args) {
-        Cola<Integer> cola = new Cola<>();
+      /* 
+        ListaSimpleEnlazada<Integer> listaSimple = new ListaSimpleEnlazada<>();
+        listaSimple.agregarFinal(5);
+        listaSimple.agregarFinal(2);
+        listaSimple.agregarFinal(8);
+        listaSimple.agregarFinal(1);
 
-        // Encolar elementos
-        cola.encolar(10);
-        cola.encolar(20);
-        cola.encolar(30);
+        System.out.println("Lista simple original:");
+        listaSimple.mostrar();
 
-        System.out.println("Elemento al frente de la cola: " + cola.peek()); // Debería imprimir 10
+        listaSimple.ordenarAscendente();
+        System.out.println("Lista simple ordenada:");
+        listaSimple.mostrar();
 
-        // Desencolar elementos
-        System.out.println("Desencolado: " + cola.desencolar()); // Debería imprimir 10
-        System.out.println("Desencolado: " + cola.desencolar()); // Debería imprimir 20
+        listaSimple.insertarPorValor(4);
+        System.out.println("Lista simple tras insertar 4 ordenadamente:");
+        listaSimple.mostrar();
 
-        // Verificar si la cola está vacía
-        System.out.println("¿La cola está vacía? " + cola.estaVacia()); // Debería imprimir false
+    
+        LIstaSimpleEnlazadaCircular<Integer> listaCircular = new LIstaSimpleEnlazadaCircular<>();
+        listaCircular.agregarFinal(7);
+        listaCircular.agregarFinal(3);
+        listaCircular.agregarFinal(9);
+        listaCircular.agregarFinal(2);
 
-        // Tamaño de la cola
-        System.out.println("Tamaño de la cola: " + cola.tamaño()); // Debería imprimir 1
+        System.out.println("Lista circular original:");
+        listaCircular.mostrar();
 
-        // Desencolar el último elemento
-        System.out.println("Desencolado: " + cola.desencolar()); // Debería imprimir 30
-        System.out.println("¿La cola está vacía? " + cola.estaVacia()); // Debería imprimir true
+        listaCircular.ordenarAscendente();
+        System.out.println("Lista circular ordenada:");
+        listaCircular.mostrar();
+
+        listaCircular.insertarPorValor(5);
+        System.out.println("Lista circular tras insertar 5 ordenadamente:");
+        listaCircular.mostrar();
+
+        /*
+         * ista simple original:
+5 2 8 1
+Lista simple ordenada:
+1 2 5 8
+Lista simple tras insertar 4 ordenadamente:
+1 2 4 5 8
+Lista circular original:
+7 3 9 2
+Lista circular ordenada:
+2 3 7 9
+Lista circular tras insertar 5 ordenadamente:
+2 3 5 7 9
+         */
+        // la salida   gracas creo q ahora si xd 
+
+        ListaDobleCircCliente listaDobleCircCliente = new ListaDobleCircCliente();
+        listaDobleCircCliente.ejecutar();
+        
     }
 }

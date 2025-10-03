@@ -3,7 +3,7 @@ package co.edu.uniquindio.poo;
 
 import java.util.Iterator;
 
-public class ListaSimpleEnlazadaIterator <T extends Comparable> implements Iterator<T> {
+public class ListaSimpleEnlazadaIterator <T extends Comparable<T>> implements Iterator<T> {
     private ListaSimpleEnlazada<T> lista;
     private int tamaño;
     private int indice;

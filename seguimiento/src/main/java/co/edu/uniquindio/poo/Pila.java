@@ -13,13 +13,15 @@ public class Pila <T extends Comparable>  {
         Nodo<T> nuevo = new Nodo<>(dato);
         nuevo.setProximo(cima);
         cima = nuevo;
+        tam ++;
      }
 
-    public T desapilar(){
-        T dato = cima.getDato();
-        cima = cima.getProximo();
-        return dato;
-    }
+   // public T desapilar(){
+        //T dato = cima.getDato();
+        //cima = cima.getProximo();
+        //return dato;
+        //tam --;
+   // }
 
 
      

@@ -1,40 +1,46 @@
 package co.edu.uniquindio.poo;
 
-public class ListaDobleSimple<T extends Comparable<T>> {
-    
+public class ListaDobleCircular<T extends Comparable<T>>  {
+
     private NodoDobleEnlazado<T> primero;
     private NodoDobleEnlazado<T> ultimo;
     private int tamaño;
 
-    public ListaDobleSimple(){
+    public ListaDobleCircular(){
         tamaño = 0;
         primero = null;
         ultimo = null;
     }
-
     public void agregarInicio(T elem){
         NodoDobleEnlazado<T> newNodo = new NodoDobleEnlazado<>(elem);
 
         if (primero == null) {
             primero = newNodo;
             ultimo = newNodo;
+            primero.setSiguiente(primero);
+            primero.setAnterior(primero);
         } else {
             newNodo.setSiguiente(primero);
+            newNodo.setAnterior(ultimo);
             primero.setAnterior(newNodo);
+            ultimo.setSiguiente(newNodo);
             primero = newNodo;
         }
         tamaño++;
     }
-
     public void agregarFinal(T elem){
         NodoDobleEnlazado<T> newNodo = new NodoDobleEnlazado<>(elem);
 
         if (primero == null) {
             primero = newNodo;
             ultimo = newNodo;
+            primero.setSiguiente(primero);
+            primero.setAnterior(primero);
         } else {
-            ultimo.setSiguiente(newNodo);
             newNodo.setAnterior(ultimo);
+            newNodo.setSiguiente(primero);
+            ultimo.setSiguiente(newNodo);
+            primero.setAnterior(newNodo);
             ultimo = newNodo;
         }
         tamaño++;
@@ -79,13 +85,19 @@ public class ListaDobleSimple<T extends Comparable<T>> {
     }
 
     public void imprimirLista() {
+        if (primero == null) {
+            System.out.println("(lista vacía)");
+            return;
+        }
+
         NodoDobleEnlazado<T> actual = primero;
-        while (actual != null) {
+        do {
             System.out.print(actual.getValor() + " ");
             actual = actual.getSiguiente();
-        }
-        System.out.println();
+        } while (actual != primero); // <- condición circular
+            System.out.println();
     }
+
 
     public void eliminarIndice(int indice) {
         if (indice < 0 || indice >= tamaño) {
@@ -163,37 +175,56 @@ public class ListaDobleSimple<T extends Comparable<T>> {
 
         tamaño++;
     }
-
-    public void sort(){
-        if (primero == null || primero.getSiguiente() == null) return; 
-        
-        for(int i = 0; i<tamaño-1; i++){
-            NodoDobleEnlazado<T> inicioBuff = primero;
-            boolean swaped = false;
-            for(int j = 0; j<tamaño-i-1; j++){
-                if (inicioBuff.getValor().compareTo(inicioBuff.getSiguiente().getValor())>0) {
-                   T buff = inicioBuff.getValor();
-                   T buffN = inicioBuff.getSiguiente().getValor();
-
-                   inicioBuff.getSiguiente().setValor(buff);
-                   inicioBuff.setValor(buffN);
-                    swaped = true;
-                } 
-                inicioBuff = inicioBuff.getSiguiente();
-            }
-            if (!swaped) {
-                break;
-            }
-        }
+    
+    public void sortx() {
+    if (primero == null || tamaño <= 1) {
+        return;  // Lista vacía o con un solo nodo ya está ordenada
     }
 
-    public void imprimir() {
+    // 🔹 Paso 1: Romper temporalmente la circularidad
+    ultimo.setSiguiente(null);
+    primero.setAnterior(null);
+
+    // 🔹 Paso 2: Bubble Sort clásico
+    boolean swapped;
+    int i = 0;
+
+    while (i < tamaño - 1) {
+        swapped = false;
         NodoDobleEnlazado<T> actual = primero;
-        while (actual != null) {
-            System.out.print(actual.getValor() + " ");
-            actual = actual.getSiguiente();
+        int j = 0;
+
+        while (j < tamaño - i - 1) {
+            NodoDobleEnlazado<T> siguiente = actual.getSiguiente();
+
+            if (actual.getValor().compareTo(siguiente.getValor()) > 0) {
+                // Intercambiar valores
+                T temp = actual.getValor();
+                actual.setValor(siguiente.getValor());
+                siguiente.setValor(temp);
+                swapped = true;
+            }
+
+            actual = siguiente;
+            j++;
         }
-        System.out.println();
+
+        if (!swapped) {
+            break;  // ya está ordenada
+        }
+
+        i++;
     }
+
+    // 🔹 Paso 3: Reconectar circularidad
+    // Buscar de nuevo el último nodo
+    ultimo = primero;
+    while (ultimo.getSiguiente() != null) {
+        ultimo = ultimo.getSiguiente();
+    }
+    ultimo.setSiguiente(primero);
+    primero.setAnterior(ultimo);
+}
+
 
 }
